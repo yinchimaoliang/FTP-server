@@ -1,0 +1,9 @@
+\section{后台部分的编写}
+在第一次实验中，我们采用的是Y3N端口，在本次实验中，我们改用Y4N端口，因而相应程序段也要做出对应修改。我们将地址从3006变为3008即可达到相应效果。修改完的代码如图：
+\begin{figure}[H]
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=8cm,height=10cm]{figure/codeofoutput2}\\
+  \caption{修改后的代码}\label{3}
+\end{figure}
+\clearpage

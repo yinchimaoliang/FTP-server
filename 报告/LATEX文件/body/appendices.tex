@@ -1,0 +1,81 @@
+\newpage
+\appendix %添加附录编号
+
+%%附录第一个章节
+\section{附录：C代码}
+
+
+%%斐波那契
+\begin{lstlisting}[language={C}]
+//T8255-1.c
+//8255并口控制器应用实验  B口输入，A口输出
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <bios.h>
+#include <ctype.h>
+#include <process.h>
+
+void key(void);
+void delay(int time);
+
+//****************根据查看配置信息修改下列符号值*******************
+#define  IOY0         0x3000
+//*****************************************************************
+#define  MY8255_A     IOY0 + 0x00*2
+#define  MY8255_B     IOY0 + 0x01*2
+#define  MY8255_C     IOY0 + 0x02*2
+#define  MY8255_MODE  IOY0 + 0x03*2
+
+char as[4] = {0x10,0x20,0x40,0x80};
+
+void main()
+{
+	
+
+	int i = 0;
+	while(1)
+	{
+		for(i = 0;i<4;i++)
+		{
+            	int a;
+	            int b;
+	for(a=0;a<=0x10;a++)
+	{
+		for(b=0;b<=0x7000;b++)
+		{
+		outp(0x3008, as[i]);
+		}
+	}
+			
+		//	delay(0x10);
+			key();
+		}
+	}
+		
+	
+
+}
+
+void key(void)
+{
+	if (bioskey(1) != 0)
+	{
+		exit(0);
+	}
+}
+
+void delay(int time)
+{
+	int i;
+	int j;
+	for(i=0;i<=time;i++)
+	{
+		for(j=0;j<=0x7000;j++)
+		{
+		}
+	}
+	return;
+}
+\end{lstlisting}

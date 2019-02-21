@@ -1,0 +1,140 @@
+\pagenumbering{arabic}
+\section{编译器功能定义}
+
+\subsection{GCC与其支持的C语言特性}
+
+\subsubsection{对GCC的框架分析}
+编译器本质上就是将一种符号（输入符号）转换成另外一种符号（输出符号）的工具。输入符号是程序开发员按照预设的规则，编写的能够实现某种特定功能的符号集合，输出符号是一种面向底层硬件，代表某种特定硬件动作的符号集合。在符号的转化过程中大致分为三个阶段，前端、中端、后端。前端接收输入符号（高级语言）并将这种高级语言转化成一种抽象的中级中间表达式，经过转化后的中级中间表达式不携带源语言的任何特征，与源语言无关；中端主要基于这种抽象表达式进行优化，在优化过程中，中端会将中间表达式转化成低级中间表达式；后端对低级中间表达式进一步优化，乃至输出另外一种符号即汇编语言。\cite{罗杰2012基于}下图给出了 GCC 编译器结构框图：
+\begin{figure}[H]
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=0.8\linewidth]{figure/GCCframe}\\
+  \caption{GCC结构框图}\label{3}
+\end{figure}
+
+\subsubsection{GCC支持的C语言子集}
+\begin{flushleft}
+1．C语言以main函数做为主函数，且是整个语言唯一的函数。main函数是一个无参的，无返回类型的，不需要返回语句retrun的函数。所有的程序必须写在main 函数里面；\\
+2．C语言的程序是以一行或多行表达式和多个程序块构成，每行表达式的结尾以分号“；”做为标志，一个程序块以大括号{}做为区域定义标志；\\
+3．C语言的表达包括变量定义表达式、赋值表达式、算术运算表达式、逻辑运算表达式；\\
+4．C语言的程序块包括三大程序结构，即顺序、分支和循环；\\
+5．C语言的变量定义只允许整型变量定义，并且可以赋初值，即类似int i＝5的定义；\\
+6．C语言的赋值语句只允许使用等号“＝”将一个表达式的值付给一个整型变量，例如x=3*y;\\
+7．C语言的算术表达式的符号包括＋,－, * , / , \^ , \%。对应的操作为加法，减法，乘法，除法，乘方，求模；\\
+8．C语言的逻辑表达式的符号包括\&\&, | | , ！,= = , != ,< , > , <= , >=。对应的运算为逻辑与，逻辑或，逻辑非，等于，不等于，小于，大于，小于等于，大于等于;\\
+9．C语言分支程序块包括if，if-else,if-elseif-…..-else的语句，其语法定语同Ansi C的定义；\\
+10．C语言循环程序块包括while，do-while和for语句；\\
+\end{flushleft}
+
+\subsection{上下文无关文法}
+
+\subsubsection{文法定义}
+\begin{flushleft}
+一个上下文无关语法由四个元素组成：\\
+  1）一个终结符号集合，它们有时也被称为“词法单元”。终结符号是该文法所定义的语言的基本符号的集合。\\
+  2）一个非终结符号集合，它们有时也被称为“语法变量”。每个非终结符号表示一个终结符号串的集合。\\
+  3）一个产生式集合，其中每个产生式包括一个称为产生式头或左部的非终结符号，一个箭头，和一个称为产生式体或右部的由终结符号及非终结符号组成的序列。产生式主要用来表示某个构造的某种书写形式。如果产生式头非终结符号代表一个构造，那么该产生式体就代表了该构造的一种书写方式。\\
+  4）指定一个非终结符号为开始符号。\cite{AlfredV.Aho2009编译}
+\end{flushleft}
+
+\subsubsection{上下文无关文法的符号表示}
+
+\begin{flushleft}
+上下文无关文法G是一个四元组：G = (T,N,P,S)\\
+  1）其中T是终结符集合。\\
+  2）N是非终结符集合。\\
+  3）P是一组产生式规则。每条规则的形式：$x -> \beta{_1} \beta{_2} \cdot \cdot \cdot \beta{_n}$ ，其中$x\in N, \beta{_i}\in(T\bigcup N)$\\
+  4）指定一个非终结符号为开始符号。
+\end{flushleft}
+
+\subsubsection{上下文无关文法描述C语言}
+\begin{flushleft}
+  加减运算：
+\begin{center}
+list -> list + digit\\
+list -> list - digit\\
+list -> digit\\
+digit -> 0|1|2|3|4|5|6|7|8|9\\
+\end{center}
+\end{flushleft}
+
+\begin{flushleft}
+  乘除运算：
+\begin{center}
+list -> list * digit\\
+list -> list / digit\\
+list -> digit\\
+digit -> 0|1|2|3|4|5|6|7|8|9\\
+\end{center}
+\end{flushleft}
+  
+
+
+
+\subsubsection{预处理器}
+预处理器的主要作用就是把通过预处理的内建功能对一个资源进行等价替换，最常见的预处理有：文件包含，条件编译、布局控制和宏替换4种。
+在GCC中通过执行g++ -E factorial.cpp > factorial.i获取相应i文件从而完成与处理工作。
+打开factorial.i文件，可以发现整个程序从17行扩展到了上万行，而仔细观察则不难发现，整个程序从"using namespace std;" 到程序结尾没有发生任何改变，所改变的只是第一行"\#include<iostream>"。而被替换的部分包括了大量.h文件，typedef等，经过比较，在本阶段中，编译器将包含的头文件"iostream" 编译了进来。
+\begin{figure}[H]
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=0.8\linewidth]{figure/codeofi}\\
+  \caption{i文件部分代码}\label{2}
+\end{figure}
+
+\subsubsection{编译器}
+预处理阶段完成后，在GCC中执行g++ -S factorial.cpp，完成编译工作。打开factorial.s，可见整个文件已经变成了汇编代码。由此可见，编译器的工作是将预处理过后的文件转化成为汇编代码。
+\begin{figure}[H]
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=0.8\linewidth]{figure/codeofs}\\
+  \caption{s文件部分代码}\label{3}
+\end{figure}
+
+\subsubsection{汇编器}
+编译阶段完成后，在GCC中执行g++ -c factorial.cpp，完成汇编工作。生成factorial.o，编辑器打开就都是二进制机器码。由此可见，汇编阶段汇编器将汇编程序转化为01机器码。
+\begin{figure}[H]
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=0.8\linewidth]{figure/codeofo}\\
+  \caption{o文件部分代码}\label{4}
+\end{figure}
+
+\subsubsection{链接器}
+汇编阶段完成之后，在GCC中执行g++ factorial.o -factorial，执行完毕后，生成了factorial.exe,打开可执行文件后，程序可正常运行。由此可见，链接器负责将汇编代码转化成为可执行程序。而编译器的任务也就此完成。
+\begin{figure}[H]
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=0.8\linewidth]{figure/exe}\\
+  \caption{exe文件}\label{5}
+\end{figure}
+\clearpage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,19 @@
+\contentsline {section}{\numberline {第1\ignorespaces 章}协议内容声明}{1}{section.1}
+\contentsline {subsection}{\numberline {1.1}自定消息类型}{1}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}自定协议交互过程}{1}{subsection.1.2}
+\contentsline {section}{\numberline {第2\ignorespaces 章}协议的具体实现}{4}{section.2}
+\contentsline {subsection}{\numberline {2.1}客户端代码实现}{4}{subsection.2.1}
+\contentsline {subsubsection}{\numberline {2.1.1}总体框架}{4}{subsubsection.2.1.1}
+\contentsline {subsubsection}{\numberline {2.1.2}多线程机制}{4}{subsubsection.2.1.2}
+\contentsline {subsubsection}{\numberline {2.1.3}按钮处理函数}{4}{subsubsection.2.1.3}
+\contentsline {subsubsection}{\numberline {2.1.4}交互的实现}{7}{subsubsection.2.1.4}
+\contentsline {subsection}{\numberline {2.2}服务器端代码实现}{9}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}总体框架}{9}{subsubsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.2}交互的实现}{9}{subsubsection.2.2.2}
+\contentsline {subsection}{\numberline {2.3}可靠性的保证}{13}{subsection.2.3}
+\contentsline {section}{\numberline {第3\ignorespaces 章}实验结果展示}{14}{section.3}
+\contentsline {subsection}{\numberline {3.1}客户端和服务器端的初始界面}{14}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}共享目录的获取}{15}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}客户端上传文件}{15}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}客户端下载文件}{17}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.5}多用户}{19}{subsection.3.5}

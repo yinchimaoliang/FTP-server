@@ -1,0 +1,39 @@
+\begin{thebibliography}{1}
+\providecommand{\bibauthor}[1]{#1}
+\providecommand{\bibeditor}[1]{#1}
+\providecommand{\bibtranslator}[1]{#1}
+\providecommand{\bibtitle}[1]{#1}
+\providecommand{\bibbooktitle}[1]{#1}
+\providecommand{\bibjournal}[1]{#1}
+\providecommand{\bibmark}[1]{#1}
+\providecommand{\bibcountry}[1]{#1}
+\providecommand{\bibpatentid}[1]{#1}
+\providecommand{\bibedition}[1]{#1}
+\providecommand{\biborganization}[1]{#1}
+\providecommand{\bibaddress}[1]{#1}
+\providecommand{\bibpublisher}[1]{#1}
+\providecommand{\bibinstitution}[1]{#1}
+\providecommand{\bibschool}[1]{#1}
+\providecommand{\bibvolume}[1]{#1}
+\providecommand{\bibnumber}[1]{#1}
+\providecommand{\bibpages}[1]{#1}
+\providecommand{\bibmodifydate}[1]{#1}
+\providecommand{\bibcitedate}[1]{#1}
+\providecommand{\bibyear}[1]{#1}
+\providecommand{\bibdate}[1]{#1}
+\providecommand{\biburl}[1]{\url{#1}}
+
+\bibitem{罗杰2012基于}
+\bibauthor{罗杰}\@. \bibtitle{基于 GCC 的 YHFT-Matrix
+  编译器关键技术研究与实现}\bibmark{[J]}\@, \bibyear{2012}\@.
+
+\bibitem{AlfredV.Aho2009编译}
+\bibauthor{V.AHO A\@, S.LAM M\@, SETHI R, et~al}\@.
+  \bibtitle{编译原理}\bibmark{[J]}\@, \bibyear{2009}\@.
+
+\bibitem{张银发2004用}
+\bibauthor{张银发\@, 丁震}\@. \bibtitle{用 MASM32 实现 Windows
+  汇编语言程序设计}\bibmark{[C]} //\thinspace{}\bibeditor{ANON}\@. \@.
+  \bibyear{2004}\@.
+
+\end{thebibliography}
